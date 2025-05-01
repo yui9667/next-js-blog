@@ -16,11 +16,9 @@ export default function PublicHeader() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href='/' legacyBehavior passHref>
-                  <NavigationMenuLink className='font-bold text-xl'>
-                    Blog
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink href='/' className='font-bold text-xl'>
+                  Blog
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>

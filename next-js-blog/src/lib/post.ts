@@ -17,7 +17,7 @@ export async function getPosts() {
 }
 
 export async function getPostId(id: string) {
-  return await prisma.post.findUnique({
+  const post = await prisma.post.findUnique({
     where: { id },
     include: {
       author: {
@@ -27,4 +27,6 @@ export async function getPostId(id: string) {
       },
     },
   });
+
+  return post;
 }
