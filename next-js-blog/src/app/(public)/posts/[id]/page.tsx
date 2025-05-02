@@ -5,11 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { format } from 'date-fns';
 import { se } from 'date-fns/locale';
 type Params = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default async function PostPage({ params }: Params) {
-  const { id } = params;
+  const { id } = await params;
   const post = await getPostId(id);
 
   if (!post) {
@@ -34,7 +34,7 @@ export default async function PostPage({ params }: Params) {
           <div className='flex justify-between items-center mb-4'>
             <p className='text-sm text-gray-500'>Author :{post.author.name}</p>
             <time className='text-sm text-gray-500'>
-              {format(new Date(post.createdAt), 'dd/mm/yyyy', {
+              {format(new Date(post.createdAt), 'dd/MM/yyyy', {
                 locale: se,
               })}
             </time>

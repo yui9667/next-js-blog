@@ -24,7 +24,7 @@ function handleValidationError(error: ZodError): ActionState {
   return {
     success: false,
     errors: Object.fromEntries(
-      Object.entries(fieldErrors).filter(([, value]) => value !== undefined)
+      Object.entries(fieldErrors).filter(([_, value]) => value !== undefined)
     ) as Record<string, string[]>,
   };
 }
