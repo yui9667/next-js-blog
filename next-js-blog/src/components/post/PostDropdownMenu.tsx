@@ -12,14 +12,17 @@ export default function PostDropdownMenu({ postId }: { postId: string }) {
         ...
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent>
+      <DropdownMenuContent className='z-20'>
         <DropdownMenuItem asChild>
-          <Link href={`/posts/${postId}`} className='cursor-pointer'>
+          <Link href={`/manage/posts/${postId}`} className='cursor-pointer'>
             Detail
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href={`/posts/edit/${postId}`} className='cursor-pointer'>
+          <Link
+            href={`/manage/posts/edit/${postId}`}
+            className='cursor-pointer'
+          >
             Edit
           </Link>
         </DropdownMenuItem>
