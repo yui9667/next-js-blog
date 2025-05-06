@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PostCardProps } from '@/types/post';
 import Link from 'next/link';
 import { formatDistanceToNow } from 'date-fns';
-import { se } from 'date-fns/locale';
+import { enUS } from 'date-fns/locale';
 import Image from 'next/image';
 export default function PostCard({ post }: PostCardProps) {
   return (
@@ -32,7 +32,7 @@ export default function PostCard({ post }: PostCardProps) {
             <time>
               {formatDistanceToNow(new Date(post.createdAt), {
                 addSuffix: true,
-                locale: se,
+                locale: enUS,
               })}
             </time>
           </div>

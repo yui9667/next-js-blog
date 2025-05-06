@@ -5,6 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { format } from 'date-fns';
 import { se } from 'date-fns/locale';
 import { auth } from '@/auth';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/github.css';
 type Params = {
   params: Promise<{ id: string }>;
 };
@@ -48,7 +52,18 @@ export default async function ShowPage({ params }: Params) {
           </div>
           <CardTitle className='text-3xl font-bold'>{post.title}</CardTitle>
         </CardHeader>
-        <CardContent>{post.content}</CardContent>
+        <CardContent>
+          <div className=' prose max-w-none '>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeHighlight]}
+              skipHtml={false}
+              unwrapDisallowed={true}
+            >
+              {post.content}
+            </ReactMarkdown>
+          </div>
+        </CardContent>
       </Card>
     </div>
   );
