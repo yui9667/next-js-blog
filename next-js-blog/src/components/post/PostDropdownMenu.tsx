@@ -6,7 +6,6 @@ import {
 } from '../ui/dropdown-menu';
 import Link from 'next/link';
 export default function PostDropdownMenu({ postId }: { postId: string }) {
-  console.log(postId);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className='px-2 py-1 border rounded-md'>

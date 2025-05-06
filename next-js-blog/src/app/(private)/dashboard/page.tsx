@@ -2,6 +2,7 @@ import { getOwnPosts } from '@/lib/ownPost';
 import { auth } from '@/auth';
 import { Button } from '@/components/ui/button';
 import PostDropdownMenu from '@/components/post/PostDropdownMenu';
+import Link from 'next/link';
 export default async function DashBoardPage() {
   const session = await auth();
   const userId = session?.user?.id;
@@ -10,12 +11,14 @@ export default async function DashBoardPage() {
     throw new Error('Bad request');
   }
   const posts = await getOwnPosts(userId);
-  console.log(posts);
+
   return (
     <div className='p-4'>
       <div className='flex justify-between'>
         <h1 className='text-2xl foot-bold mb-4'>Article List</h1>
-        <Button>Create a new article </Button>
+        <Button>
+          <Link href='../manage/posts/create'>Create a new article</Link>{' '}
+        </Button>
       </div>
       <table className='table-auto w-full border-collapse border '>
         <thead>
