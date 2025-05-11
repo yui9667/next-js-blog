@@ -1,6 +1,6 @@
 'use client';
 import { useState, useActionState, useEffect } from 'react';
-import { createPost } from '@/lib/actions/createPost';
+import { updatePost } from '@/lib/actions/updatePost';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -10,6 +10,8 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
 type EditPostFormProps = {
   post: {
     id: string;
@@ -28,7 +30,7 @@ export default function EditPostForm({ post }: EditPostFormProps) {
   const [published, setPublished] = useState(post.published);
   const [imagePreview, setImagePreview] = useState(post.topImage);
 
-  const [state, formAction] = useActionState(createPost, {
+  const [state, formAction] = useActionState(updatePost, {
     success: false,
     errors: {},
   });
@@ -136,6 +138,21 @@ export default function EditPostForm({ post }: EditPostFormProps) {
             </ReactMarkdown>
           </div>
         )}
+        <RadioGroup
+          value={published ? 'true' : 'false'}
+          name='published'
+          onValueChange={(value) => setPublished(value === 'true')}
+        >
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='true' id='published-one' />
+            <Label htmlFor='published-one'>Display</Label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <RadioGroupItem value='false' id='published-two' />
+            <Label htmlFor='published-two'>Hidden</Label>
+          </div>
+        </RadioGroup>
+
         <Button
           type='submit'
           className='bg-blue-500 text-white px-4 py-2 rounded'
