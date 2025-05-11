@@ -30,6 +30,7 @@ export async function getOwnPost(userId: string, postId: string) {
       author: true,
       createdAt: true,
       updatedAt: true,
+      published: true,
     },
   });
 }
