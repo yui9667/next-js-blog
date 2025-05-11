@@ -20,7 +20,7 @@ export default function PostDropdownMenu({ postId }: { postId: string }) {
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link
-            href={`/manage/posts/edit/${postId}`}
+            href={`/manage/posts/${postId}/edit/`}
             className='cursor-pointer'
           >
             Edit
